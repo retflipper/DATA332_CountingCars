@@ -59,5 +59,8 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 ## Stacked Barchart with Speeding by Car Type
 <img src= 'speeding_by_car.png'>
 
+## Scatterplot of Final Read vs. Difference in Reading by Type of Car
+<img src= 'scatterplot.png'>
+
 
 
