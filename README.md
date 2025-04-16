@@ -56,4 +56,8 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 - Standard Deviation: 2.24
 - Outliers: -7, -6, -5, -4, -3, 2, 3, 5, 6, 8, 10, 11, 14
 
+## Stacked Barchart with Speeding by Car Type
+<img src= 'speeding_by_car.png'>
+
+
 
