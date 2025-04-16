@@ -35,7 +35,14 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 ```
 3. Converting time from character value to a time bvalue using hms function.
 ```
+dataset$Time_Recorded <- as_hms(dataset$Time_Recorded)
 
+dataset <- dataset %>%
+  mutate(Time_Category = case_when(
+    Time_Recorded >= as_hms("00:00:00") & Time_Recorded < as_hms("12:00:00") ~ "morning",
+    Time_Recorded >= as_hms("12:00:00") & Time_Recorded < as_hms("17:00:00") ~ "midday",
+    Time_Recorded >= as_hms("17:00:00") & Time_Recorded <= as_hms("23:59:59") ~ "afternoon"
+  ))
 ```
 ---
 ## BoxPlot with Final Speeds
