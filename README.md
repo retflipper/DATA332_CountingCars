@@ -78,5 +78,8 @@ dataset <- dataset %>%
 - It is clear that Sedan's and SUVs are the most common vehicle.
 - Just like our boxplots above show, there is minimal differences between initial and final speed, ranging mostly from -2 to +2. 
 
+## Stacked Barchart comparing Time of Day and Type of Speeder
+<
+This charts showcases the three different time frames the car data was collected. This graph shows that more people speed during the mornings. This could be because of people trying to get to work or school. A drop off of speeders over 5 mph during the mid is seen but they return once again in the afternoon after they get off work.
 
 
