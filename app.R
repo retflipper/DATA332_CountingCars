@@ -42,12 +42,15 @@ ui<-fluidPage(
              selectInput('Splitby', 'Split By', column_names,column_names[3])
       ),
       column(4,plotOutput('scatter_plot')),
-      column(6,DT::dataTableOutput("table_01", width = "100%"))
+      column(6,DT::dataTableOutput("table_01", width = "100%"),
+             h5("text here"))
     )),
     
-    nav_panel("Difference in Speed Box Plots", plotOutput("difference_in_speed_box_plot")),
+    nav_panel("Difference in Speed Box Plots", plotOutput("difference_in_speed_box_plot"),
+              h5("text here")),
     
-    nav_panel("Final Speed Box Plots", plotOutput("final_speed_box_plot"))
+    nav_panel("Final Speed Box Plots", plotOutput("final_speed_box_plot"),
+              h5("text here"))
   )
   
   
