@@ -84,6 +84,6 @@ dataset <- dataset %>%
 
 ---
 # Conclusion
-- Based on our analysis and the data we collected, the speedometer sign is ineffective at detering speeding near Thorson-Lucken Field. Our median final speed was above the speed limit and according to the differences in speed chart, about 50% of drivers actually sped up in their final read. 
+- Based on our analysis and the data we collected, the speedometer sign is ineffective at detering speeding near Thorson-Lucken Field. Our median final speed was above the speed limit and according to the differences in speed chart, about 50% of drivers actually sped up in their final read. Our hosted shiny app can be accessed here: https://lfaugustana.shinyapps.io/counting_cars/
 
 
