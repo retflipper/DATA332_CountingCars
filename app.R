@@ -30,8 +30,8 @@ column_names<-colnames(dataset) #for input selections
 
 ui<-fluidPage( 
   
-  titlePanel(title = "Explore MTCARS Dataset"),
-  h4('Motor Trend Car Road Tests'),
+  titlePanel(title = "Explore Counting Cars Dataset"),
+  
   
   navset_card_underline(
     
