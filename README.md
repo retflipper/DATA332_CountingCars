@@ -37,6 +37,7 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 ---
 ## BoxPlot with Final Speeds
 <img src= 'final_speed_box.png'>
+
 - Min:14
 - Max: 41
 - Median: 31
@@ -47,6 +48,7 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 
 ## Boxplot with Differences in Speed
 <img src= 'difference_box.png'>
+
 - Min: -7
 - Max: 14
 - Median: 0
