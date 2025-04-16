@@ -81,10 +81,13 @@ ui <- fluidPage(
                   Based on this, we can assume that the presence of a speed sign may not lead to drivers decreasing their speed.")
     ),
     
-    nav_panel("Speeding by Car Type",
+nav_panel("Speeding by Car Type",
               plotOutput("speeding_by_car_type"),
               h5("Summary Statistics for Final Read"),
-              h5("analysis here")
+              h5("In this chart the cars are classified by their type and by how much if at all they were speeding by.
+                 The red indicates more the 5 mph over the speed limit, yellow is under 5 over the speed limit, and green is not speeding.
+                 Our analysis shows that the majority of cars in this area are sedans and SUVs. 
+                 between these two majority groups the sedans show a higher probablity of the driver speeding than the SUV drivers.")
     )
   )
 )
