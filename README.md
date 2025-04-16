@@ -63,5 +63,8 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 ## Scatterplot of Final Read vs. Difference in Reading by Type of Car
 <img src= 'Images/scatterplot.png'>
 
+- It is clear that Sedan's and SUVs are the most common vehicle.
+- Just like our boxplots above show, there is minimal differences between initial and final speed, ranging mostly from -2 to +2. 
+
 
 
