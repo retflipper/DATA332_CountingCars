@@ -54,7 +54,9 @@ ui <- fluidPage(
               plotOutput("difference_in_speed_box_plot"),
               h5("Summary Statistics for Difference in Readings"),
               tableOutput("diff_summary"),
-              h5("analysis here")
+              h5("This box & whisker plot displays the difference in speed from a driver's initial .vs. their final read. 
+                 The mean and median both being at or near zero respectively show that the 
+                 pressence of a speed sign may not deter drivers from lowering there speed.")
     ),
     
     nav_panel("Final Speed Box Plots",
