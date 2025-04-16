@@ -47,7 +47,7 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 
 
 ## Boxplot with Differences in Speed
-<img src= 'difference_box.png'>
+<img src= 'difference_boxplot.png'>
 
 - Min: -7
 - Max: 14
