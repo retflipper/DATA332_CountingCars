@@ -4,6 +4,8 @@ library(DT)
 library(readxl)
 library(RCurl)
 library(bslib)
+library(dplyr)
+library(tidyr)
 
 data_url <- getURL("https://raw.githubusercontent.com/retflipper/DATA332_CountingCars/refs/heads/main/data/Counting_Cars.csv")
 dataset <- read.csv(text = data_url)
@@ -27,6 +29,16 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 
 column_names<-colnames(dataset) #for input selections
 
+dataset <- dataset %>%
+  mutate(Speeding_Classification = case_when(
+    Difference_In_Readings <= 0 ~ "not_speeding",
+    Difference_In_Readings > 0 & Difference_In_Readings <= 5 ~ "speeding_by_5_or_less",
+    Difference_In_Readings > 5 ~ "speeding_by_more_than_5"
+  ))
+
+car_type_speeding_pivot_table <- dataset %>%
+  group_by(Type_of_Car, Speeding_Classification) %>%
+  summarize(Count = n())
 
 ui <- fluidPage( 
   
@@ -61,6 +73,13 @@ ui <- fluidPage(
     
     nav_panel("Final Speed Box Plots",
               plotOutput("final_speed_box_plot"),
+              h5("Summary Statistics for Final Read"),
+              tableOutput("final_summary"),
+              h5("analysis here")
+    ),
+
+    nav_panel("Speeding by Car Type",
+              plotOutput("speeding_by_car_type"),
               h5("Summary Statistics for Final Read"),
               tableOutput("final_summary"),
               h5("analysis here")
@@ -127,6 +146,14 @@ server <- function(input, output) {
       Max = max(final_data, na.rm = TRUE),
       SD = round(sd(final_data, na.rm = TRUE), 2)
     )
+
+  # Bar Chart for Speeding by Car Type
+  output$speeding_by_car_type <- renderPlot({
+    ggplot(car_type_speeding_pivot_table, aes(fill=Speeding_Classification, y=Count, x=Type_of_Car)) + 
+      geom_bar(position="stack", stat="identity") +
+      scale_fill_manual(values = c("#2dc937", "#e7b416", "#cc3232")) +
+      xlab("Type of Car")
+  })
   })
 }
 
