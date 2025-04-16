@@ -36,7 +36,7 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 
 ---
 ## BoxPlot with Final Speeds
-<img src= 'final_speed_box.png'>
+<img src= 'final_read_box.png'>
 
 - Min:14
 - Max: 41
