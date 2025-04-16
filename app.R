@@ -82,14 +82,18 @@ ui <- fluidPage(
     
     nav_panel("Speeding by Car Type",
               plotOutput("speeding_by_car_type"),
-              h5("Summary Statistics for Final Read"),
               h5("In this chart the cars are classified by their type and by how much if at all they were speeding by.
                  The red indicates more the 5 mph over the speed limit, yellow is under 5 over the speed limit, and green is not speeding.
                  Our analysis shows that the majority of cars in this area are Sedans and SUVs. 
                  Between these two majority groups the Sedans show a higher probablity of the driver speeding than the SUV drivers.")
     ),
     
-    nav_panel("Speeding by Time of Day", plotOutput("speeding_by_time_of_day")),
+    nav_panel("Speeding by Time of Day", 
+              plotOutput("speeding_by_time_of_day"),
+              h5("This charts showcases the three different time frames the car data was collected. 
+                 This graph shows that more people speed during the mornings. 
+                 This could be because of people trying to get to work or school. 
+                 A drop off of speeders over 5 mph during the mid is seen but they return once again in the afternoon after they get off work.")),
     
     nav_panel("Scatter Plots", fluidRow(
       column(2,
