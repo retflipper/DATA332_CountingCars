@@ -70,7 +70,7 @@ dataset <- dataset %>%
 ## Stacked Barchart with Speeding by Car Type
 <img src= 'Images/speeding_by_car.png'>
 
--In this chart the cars are classified by their type and by how much if at all they were speeding by. The red indicates more than 5 mph over the speed limit, yellow is under 5 over the speed limit, and green is not speeding. Our analysis shows that the majority of cars in this area are sedans and SUVs. Between these two majority groups, the Sedans show a higher probablity of the driver speeding than the SUV drivers.
+- In this chart the cars are classified by their type and by how much if at all they were speeding by. The red indicates more than 5 mph over the speed limit, yellow is under 5 over the speed limit, and green is not speeding. Our analysis shows that the majority of cars in this area are sedans and SUVs. Between these two majority groups, the Sedans show a higher probablity of the driver speeding than the SUV drivers.
 
 ## Scatterplot of Final Read vs. Difference in Reading by Type of Car
 <img src= 'Images/scatterplot.png'>
@@ -80,6 +80,6 @@ dataset <- dataset %>%
 
 ## Stacked Barchart comparing Time of Day and Type of Speeder
 <img src='Images/time_day.png'>
--This charts showcases the three different time frames the car data was collected. This graph shows that more people speed during the mornings. This could be because of people trying to get to work or school. A drop off of speeders over 5 mph during the mid is seen but they return once again in the afternoon after they get off work.
+- This charts showcases the three different time frames the car data was collected. This graph shows that more people speed during the mornings. This could be because of people trying to get to work or school. A drop off of speeders over 5 mph during the mid is seen but they return once again in the afternoon after they get off work.
 
 
