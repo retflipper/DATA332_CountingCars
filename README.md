@@ -82,4 +82,8 @@ dataset <- dataset %>%
 <img src='Images/time_day.png'>
 - This charts showcases the three different time frames the car data was collected. This graph shows that more people speed during the mornings. This could be because of people trying to get to work or school. A drop off of speeders over 5 mph during the mid is seen but they return once again in the afternoon after they get off work.
 
+---
+# Conclusion
+- Based on our analysis and the data we collected, the speedometer sign is ineffective at detering speeding near Thorson-Lucken Field. Our median final speed was above the speed limit and according to the differences in speed chart, about 50% of drivers actually sped up in their final read. 
+
 
