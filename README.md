@@ -44,7 +44,7 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 - Mean: 31.05
 - Standard Deviation: 3.97
 - Outliers: 14, 15, 19, 21
-- This box & whisker plot displays the difference in speed from a driver's initial vs. their final read. The mean and median both being at or near zero respectively show that the presence of a speed sign may not deter drivers from lowering there speed.
+- The median is just over the speed limit of 30. The interquartile range is from 28-34, meaning 50% of the speeds fall within this range. A large portion of the IQR is above 30 mph, meaning most of the drivers were speeding. The right whisker ends at 41, further portraying that the data is skewed above the speed limit. Based on this, we can assume that the presence of a speed sign may not lead to drivers decreasing their speed.
   
 ## Boxplot with Differences in Speed
 <img src= 'Images/difference_boxplot.png'>
@@ -55,7 +55,7 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 - Mean: -0.09
 - Standard Deviation: 2.24
 - Outliers: -7, -6, -5, -4, -3, 2, 3, 5, 6, 8, 10, 11, 14
-- The median is just over the speed limit of 30. The interquartile range is from 28-34, meaning 50% of the speeds fall within this range. A large portion of the IQR is above 30 mph, meaning most of the drivers were speeding. The right whisker ends at 41, further portraying that the data is skewed above the speed limit. Based on this, we can assume that the presence of a speed sign may not lead to drivers decreasing their speed.
+- This box & whisker plot displays the difference in speed from a driver's initial vs. their final read. The mean and median both being at or near zero respectively show that the presence of a speed sign may not deter drivers from lowering there speed.
 
 ## Stacked Barchart with Speeding by Car Type
 <img src= 'Images/speeding_by_car.png'>
