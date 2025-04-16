@@ -3,6 +3,7 @@ library(ggplot2)
 library(DT)
 library(readxl)
 library(RCurl)
+library(bslib)
 
 data_url <- getURL("https://raw.githubusercontent.com/retflipper/DATA332_CountingCars/refs/heads/main/data/Counting_Cars.csv")
 dataset <- read.csv(text = data_url)
@@ -22,7 +23,6 @@ car_types <- c(
   "9" = "Truck",
   "10" = "Pickup Truck"
 )
-
 dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 
 column_names<-colnames(dataset) #for input selections
@@ -33,14 +33,21 @@ ui<-fluidPage(
   titlePanel(title = "Explore MTCARS Dataset"),
   h4('Motor Trend Car Road Tests'),
   
-  fluidRow(
-    column(2,
-           selectInput('X', 'Choose X',column_names,column_names[1]),
-           selectInput('Y', 'Choose Y',column_names,column_names[3]),
-           selectInput('Splitby', 'Split By', column_names,column_names[3])
-    ),
-    column(4,plotOutput('plot_01')),
-    column(6,DT::dataTableOutput("table_01", width = "100%"))
+  navset_card_underline(
+    
+    nav_panel("Scatter Plots", fluidRow(
+      column(2,
+             selectInput('X', 'Choose X',column_names,column_names[1]),
+             selectInput('Y', 'Choose Y',column_names,column_names[3]),
+             selectInput('Splitby', 'Split By', column_names,column_names[3])
+      ),
+      column(4,plotOutput('scatter_plot')),
+      column(6,DT::dataTableOutput("table_01", width = "100%"))
+    )),
+    
+    nav_panel("Difference in Speed Box Plots", plotOutput("difference_in_speed_box_plot")),
+    
+    nav_panel("Final Speed Box Plots", plotOutput("final_speed_box_plot"))
   )
   
   
@@ -48,8 +55,16 @@ ui<-fluidPage(
 
 server<-function(input,output){
   
-  output$plot_01 <- renderPlot({
+  output$scatter_plot <- renderPlot({
     ggplot(dataset, aes_string(x=input$X, y=input$Y, colour=input$Splitby))+ geom_point()
+  })
+  
+  output$difference_in_speed_box_plot <- renderPlot({
+    boxplot(dataset$Difference_In_Readings , col="#69b3a2" , xlab="complete box", horizontal=TRUE)
+  })
+  
+  output$final_speed_box_plot <- renderPlot({
+    boxplot(dataset$Final_Read , col="#69b3a2" , xlab="complete box", horizontal=TRUE)
   })
   
   output$table_01<-DT::renderDataTable(dataset[,c(input$X,input$Y,input$Splitby)],options = list(pageLength = 4))
