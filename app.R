@@ -75,7 +75,10 @@ ui <- fluidPage(
               plotOutput("final_speed_box_plot"),
               h5("Summary Statistics for Final Read"),
               tableOutput("final_summary"),
-              h5("analysis here")
+              h5("The median is just over the speed limit of 30. The interquartile range is from 28-34, meaning 50% of the speeds fall within this range. 
+                  A large portion of the IQR is above 30 mph, meaning most of the drivers were speeding.
+                  The right whisker ends at 41, further portraying that the data is skewed above the speed limit. 
+                  Based on this, we can assume that the presence of a speed sign may not lead to drivers decreasing their speed.")
     ),
     
     nav_panel("Speeding by Car Type",
