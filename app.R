@@ -186,7 +186,7 @@ server <- function(input, output) {
     ggplot(time_of_day_speeding_pivot_table, aes(fill=Speeding_Classification, y=Count, x=Time_Category)) + 
       geom_bar(position="stack", stat="identity") +
       scale_fill_manual(values = c("#2dc937", "#e7b416", "#cc3232")) +
-      xlab("Type of Day")
+      xlab("Time of Day")
   })
 }
 
