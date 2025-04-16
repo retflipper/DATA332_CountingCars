@@ -80,6 +80,6 @@ dataset <- dataset %>%
 
 ## Stacked Barchart comparing Time of Day and Type of Speeder
 <img src='Images/time_day.png'>
-This charts showcases the three different time frames the car data was collected. This graph shows that more people speed during the mornings. This could be because of people trying to get to work or school. A drop off of speeders over 5 mph during the mid is seen but they return once again in the afternoon after they get off work.
+-This charts showcases the three different time frames the car data was collected. This graph shows that more people speed during the mornings. This could be because of people trying to get to work or school. A drop off of speeders over 5 mph during the mid is seen but they return once again in the afternoon after they get off work.
 
 
