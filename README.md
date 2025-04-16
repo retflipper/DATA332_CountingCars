@@ -33,7 +33,10 @@ car_types <- c(
 
 dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 ```
+3. Converting time from character value to a time bvalue using hms function.
+```
 
+```
 ---
 ## BoxPlot with Final Speeds
 <img src= 'Images/final_read_box.png'>
@@ -59,6 +62,8 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 
 ## Stacked Barchart with Speeding by Car Type
 <img src= 'Images/speeding_by_car.png'>
+
+-In this chart the cars are classified by their type and by how much if at all they were speeding by. The red indicates more than 5 mph over the speed limit, yellow is under 5 over the speed limit, and green is not speeding. Our analysis shows that the majority of cars in this area are sedans and SUVs. Between these two majority groups, the Sedans show a higher probablity of the driver speeding than the SUV drivers.
 
 ## Scatterplot of Final Read vs. Difference in Reading by Type of Car
 <img src= 'Images/scatterplot.png'>
