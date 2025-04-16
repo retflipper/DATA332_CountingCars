@@ -44,7 +44,7 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 - Mean: 31.05
 - Standard Deviation: 3.97
 - Outliers: 14, 15, 19, 21
-- This box & whisker plot displays the difference in speed from a driver's initial .vs. their final read. The mean and median both being at or near zero respectively show that the presence of a speed sign may not deter drivers from lowering there speed.
+- This box & whisker plot displays the difference in speed from a driver's initial vs. their final read. The mean and median both being at or near zero respectively show that the presence of a speed sign may not deter drivers from lowering there speed.
   
 ## Boxplot with Differences in Speed
 <img src= 'Images/difference_boxplot.png'>
