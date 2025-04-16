@@ -45,20 +45,23 @@ ui <- fluidPage(
       column(6,
              DT::dataTableOutput("table_01", width = "100%"),
              h5("Summary Statistics for Selected Columns"),
-             tableOutput("scatter_summary")
+             tableOutput("scatter_summary"),
+             h5("analysis here")
       )
     )),
     
     nav_panel("Difference in Speed Box Plots",
               plotOutput("difference_in_speed_box_plot"),
               h5("Summary Statistics for Difference in Readings"),
-              tableOutput("diff_summary")
+              tableOutput("diff_summary"),
+              h5("analysis here")
     ),
     
     nav_panel("Final Speed Box Plots",
               plotOutput("final_speed_box_plot"),
               h5("Summary Statistics for Final Read"),
-              tableOutput("final_summary")
+              tableOutput("final_summary"),
+              h5("analysis here")
     )
   )
 )
