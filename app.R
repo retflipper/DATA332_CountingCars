@@ -85,8 +85,8 @@ nav_panel("Speeding by Car Type",
               plotOutput("speeding_by_car_type"),
               h5("In this chart the cars are classified by their type and by how much if at all they were speeding by.
                  The red indicates more than 5 mph over the speed limit, yellow is under 5 over the speed limit, and green is not speeding.
-                 Our analysis shows that the majority of cars in this area are sedans and SUVs. 
-                 between these two majority groups the sedans show a higher probablity of the driver speeding than the SUV drivers.")
+                 Our analysis shows that the majority of cars in this area are Sedans and SUVs. 
+                 Between these two majority groups the Sedans show a higher probablity of the driver speeding than the SUV drivers.")
     )
   )
 )
