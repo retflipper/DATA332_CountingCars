@@ -68,23 +68,19 @@ ui <- fluidPage(
               tableOutput("diff_summary"),
               h5("This box & whisker plot displays the difference in speed from a driver's initial .vs. their final read. 
                  The mean and median both being at or near zero respectively show that the 
-                 presence of a speed sign may not deter drivers from lowering there speed.")
+                 pressence of a speed sign may not deter drivers from lowering there speed.")
     ),
     
     nav_panel("Final Speed Box Plots",
               plotOutput("final_speed_box_plot"),
               h5("Summary Statistics for Final Read"),
               tableOutput("final_summary"),
-              h5("The median is just over the speed limit of 30. The interquartile range is from 28-34, meaning 50% of the speeds fall within this range. 
-                 A large portion of the IQR is above 30 mph, meaning most of the drivers were speeding.
-                 The right whisker ends at 41, further portraying that the data is skewed above the speed limit. 
-                 Based on this, we can assume that the presence of a speed sign may not lead to drivers decreasing their speed.")
+              h5("analysis here")
     ),
-
+    
     nav_panel("Speeding by Car Type",
               plotOutput("speeding_by_car_type"),
               h5("Summary Statistics for Final Read"),
-              tableOutput("final_summary"),
               h5("analysis here")
     )
   )
@@ -148,15 +144,15 @@ server <- function(input, output) {
       Median = median(final_data, na.rm = TRUE),
       Max = max(final_data, na.rm = TRUE),
       SD = round(sd(final_data, na.rm = TRUE), 2)
-    )
-
+      )
+  })
+    
   # Bar Chart for Speeding by Car Type
   output$speeding_by_car_type <- renderPlot({
-    ggplot(car_type_speeding_pivot_table, aes(fill=Speeding_Classification, y=Count, x=Type_of_Car)) + 
-      geom_bar(position="stack", stat="identity") +
-      scale_fill_manual(values = c("#2dc937", "#e7b416", "#cc3232")) +
-      xlab("Type of Car")
-  })
+      ggplot(car_type_speeding_pivot_table, aes(fill=Speeding_Classification, y=Count, x=Type_of_Car)) + 
+        geom_bar(position="stack", stat="identity") +
+        scale_fill_manual(values = c("#2dc937", "#e7b416", "#cc3232")) +
+        xlab("Type of Car")
   })
 }
 
