@@ -36,7 +36,7 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 
 ---
 ## BoxPlot with Final Speeds
-<img src= 'final_read_box.png'>
+<img src= 'Images/final_read_box.png'>
 
 - Min:14
 - Max: 41
@@ -47,7 +47,7 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 
 
 ## Boxplot with Differences in Speed
-<img src= 'difference_boxplot.png'>
+<img src= 'Images/difference_boxplot.png'>
 
 - Min: -7
 - Max: 14
@@ -57,10 +57,10 @@ dataset$Type_of_Car <- car_types[as.character(dataset$Type_of_Car)]
 - Outliers: -7, -6, -5, -4, -3, 2, 3, 5, 6, 8, 10, 11, 14
 
 ## Stacked Barchart with Speeding by Car Type
-<img src= 'speeding_by_car.png'>
+<img src= 'Images/speeding_by_car.png'>
 
 ## Scatterplot of Final Read vs. Difference in Reading by Type of Car
-<img src= 'scatterplot.png'>
+<img src= 'Images/scatterplot.png'>
 
 
 
