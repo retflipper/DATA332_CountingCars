@@ -6,6 +6,7 @@ library(RCurl)
 library(bslib)
 library(dplyr)
 library(tidyr)
+library(hms)
 
 data_url <- getURL("https://raw.githubusercontent.com/retflipper/DATA332_CountingCars/refs/heads/main/data/Counting_Cars.csv")
 dataset <- read.csv(text = data_url)
@@ -40,27 +41,25 @@ car_type_speeding_pivot_table <- dataset %>%
   group_by(Type_of_Car, Speeding_Classification) %>%
   summarize(Count = n())
 
+dataset$Time_Recorded <- as_hms(dataset$Time_Recorded)
+
+dataset <- dataset %>%
+  mutate(Time_Category = case_when(
+    Time_Recorded >= as_hms("00:00:00") & Time_Recorded < as_hms("12:00:00") ~ "morning",
+    Time_Recorded >= as_hms("12:00:00") & Time_Recorded < as_hms("17:00:00") ~ "midday",
+    Time_Recorded >= as_hms("17:00:00") & Time_Recorded <= as_hms("23:59:59") ~ "afternoon"
+  ))
+
+time_of_day_speeding_pivot_table <- dataset %>%
+  group_by(Type_of_Car, Time_Category, Speeding_Classification) %>%
+  summarize(Count = n())
+
 ui <- fluidPage( 
   
   titlePanel(title = "Explore Counting Car Dataset"),
   
   
   navset_card_underline(
-    
-    nav_panel("Scatter Plots", fluidRow(
-      column(2,
-             selectInput('X', 'Choose X', column_names, column_names[1]),
-             selectInput('Y', 'Choose Y', column_names, column_names[3]),
-             selectInput('Splitby', 'Split By', column_names, column_names[3])
-      ),
-      column(4, plotOutput('scatter_plot')),
-      column(6,
-             DT::dataTableOutput("table_01", width = "100%"),
-             h5("Summary Statistics for Selected Columns"),
-             tableOutput("scatter_summary"),
-             h5("analysis here")
-      )
-    )),
     
     nav_panel("Difference in Speed Box Plots",
               plotOutput("difference_in_speed_box_plot"),
@@ -81,13 +80,31 @@ ui <- fluidPage(
                   Based on this, we can assume that the presence of a speed sign may not lead to drivers decreasing their speed.")
     ),
     
-nav_panel("Speeding by Car Type",
+    nav_panel("Speeding by Car Type",
               plotOutput("speeding_by_car_type"),
+              h5("Summary Statistics for Final Read"),
               h5("In this chart the cars are classified by their type and by how much if at all they were speeding by.
-                 The red indicates more than 5 mph over the speed limit, yellow is under 5 over the speed limit, and green is not speeding.
+                 The red indicates more the 5 mph over the speed limit, yellow is under 5 over the speed limit, and green is not speeding.
                  Our analysis shows that the majority of cars in this area are Sedans and SUVs. 
                  Between these two majority groups the Sedans show a higher probablity of the driver speeding than the SUV drivers.")
-    )
+    ),
+    
+    nav_panel("Speeding by Time of Day", plotOutput("speeding_by_time_of_day")),
+    
+    nav_panel("Scatter Plots", fluidRow(
+      column(2,
+             selectInput('X', 'Choose X', column_names, column_names[1]),
+             selectInput('Y', 'Choose Y', column_names, column_names[3]),
+             selectInput('Splitby', 'Split By', column_names, column_names[3])
+      ),
+      column(4, plotOutput('scatter_plot')),
+      column(6,
+             DT::dataTableOutput("table_01", width = "100%"),
+             h5("Summary Statistics for Selected Columns"),
+             tableOutput("scatter_summary"),
+             h5("analysis here")
+      )
+    ))
   )
 )
 
@@ -149,15 +166,22 @@ server <- function(input, output) {
       Median = median(final_data, na.rm = TRUE),
       Max = max(final_data, na.rm = TRUE),
       SD = round(sd(final_data, na.rm = TRUE), 2)
-      )
+    )
   })
-    
+  
   # Bar Chart for Speeding by Car Type
   output$speeding_by_car_type <- renderPlot({
-      ggplot(car_type_speeding_pivot_table, aes(fill=Speeding_Classification, y=Count, x=Type_of_Car)) + 
-        geom_bar(position="stack", stat="identity") +
-        scale_fill_manual(values = c("#2dc937", "#e7b416", "#cc3232")) +
-        xlab("Type of Car")
+    ggplot(car_type_speeding_pivot_table, aes(fill=Speeding_Classification, y=Count, x=Type_of_Car)) + 
+      geom_bar(position="stack", stat="identity") +
+      scale_fill_manual(values = c("#2dc937", "#e7b416", "#cc3232")) +
+      xlab("Type of Car")
+  })
+  
+  output$speeding_by_time_of_day <- renderPlot({
+    ggplot(time_of_day_speeding_pivot_table, aes(fill=Speeding_Classification, y=Count, x=Time_Category)) + 
+      geom_bar(position="stack", stat="identity") +
+      scale_fill_manual(values = c("#2dc937", "#e7b416", "#cc3232")) +
+      xlab("Type of Day")
   })
 }
 
